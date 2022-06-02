@@ -1,0 +1,188 @@
+---
+layout: default
+---
+
+<!--
+
+Last full read through 29/12/2020
+
+##############################################
+# About Layout            /_layouts/about.html
+##############################################
+
+-->
+
+{% if site.data.copy.about[page.env].title %}
+{% assign strap = site.data.copy.about[page.env].title %}
+{% else %}
+{% assign strap = site.description %}
+{% endif %}
+
+<div class="hero hero-65">
+
+  <div class="hero__overlay h-100">
+    {% picture {{ page.hero.file | prepend: 'content/' }}
+      --img class="hero__image hero__image--fixed hero-65"
+      --alt {{ page.hero.alt }} %}</div>
+
+  <header class="hero__strap hero__strap--center image__filter--blur hero-65" aria-label="{{ strap }}">
+
+      <h1 aria-hidden="true" >
+      {% assign n = strap.size | minus: 1 %}
+      {%- for char in (0..n ) -%}
+
+      <span style="animation-delay: {{ char | times: 40 | plus: 200 }}ms;">{{ strap | slice: char }}</span>
+      {%- endfor -%}</h1>
+
+  </header>
+
+</div>
+
+
+<!-- exclude if no text is provided -->
+{% if site.data.copy.about[page.env].text %}
+<div class="about__copy bg--env-100" id="content">
+
+  {% for item in site.data.copy.about[page.env].text %}
+  <p class="about--copy" data-aos="fade-in">
+    {{ item.para }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="embedded__video about--video">
+  <!--
+  <h2>Watch our company video</h2>
+  -->
+  {% include vimeoPlayer.html id="493777125" %}
+
+</div>
+
+<div class="about__team">
+  <h2 class="bg--env-50 about__team--title">Meet the team</h2>
+  <div class="team__head bg--env-50">
+
+    {% for menu in site.data.team.menu %}
+    <h3 class="team__title team--js-script-{{ menu.script }}"
+        id="team{{ menu.script }}"
+        onclick="team{{ menu.script }}()">
+
+      <i class="{{ menu.icon }}"></i>
+      <span class="title__title--text">{{ menu.name }}</span></h3>
+    {% endfor %}
+  </div>
+
+  <div class="team__members" id="gaitq-team">
+
+    {% for member in site.data.team.members %}
+
+    <div class=" single__member single__member--active
+      {% assign ships = member.membership | split: ', ' %}
+      {% for item in ships %}
+        team--{{ item }}
+      {% endfor %} ">
+
+        <div class="single__member__image">
+          <img class="member--image" src="
+          {%- if member.image -%}
+            {{ member.image | prepend: '/assets/images/content/people/' | relative_url }}
+          {%- else -%}
+            {{ 'team-placeholder.jpg' | prepend: '/assets/images/defaults/' | relative_url }}
+          {%- endif -%}" alt="{{ member.name }} is the {{ member.position }}" />
+        </div>
+
+        <div class="single__member__text">
+        <h2>{{ member.name }}</h2>
+
+        <h2 class="member__position">{{ member.position }}</h2>
+
+        {% if member.social %}
+        <ul class="member__socials">
+          {% for socials in member.social %}
+          <li>
+            <a class="social--{{ socials.name }} social"href="{{ socials.url }}">
+              <i class="{{ socials.icon }}"></i></a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <p class="member__info">{{ member.alt }}</p>
+
+        <!-- Only hide long member.alt, 100 char ~ 2 lines -->
+        {% if member.alt.size > 100 %}
+        <div class="info__conceal" ><p><i class="fas fa-angle-double-down"> </i></p></div>
+        {% endif %}
+      </div>
+
+    </div>
+
+    {% endfor %}
+
+  </div>
+</div>
+
+<!--
+
+-->
+<script>
+  /*
+  On load we hide some members.
+  '.single__member.single__member--active' is applied to all members, such that all members are 'display: flex' so in the event of no JS we see everyone. Removing '.single__member--active' defaults display to 'display: none'.
+  */
+
+  /* get core .team__title and apply style */
+  const title = document.querySelectorAll(".team__title.team--js-script-core");
+  for(var i = 0; i < title.length; i++)
+    title[i].classList.add('team__title--active');
+
+  /* get members that do not belong to '.team--core' and remove '.single__member--active' */
+  const members = document.querySelectorAll(".single__member:not(.team--core)");
+  for(var i = 0; i < members.length; i++)
+    members[i].classList.remove('single__member--active');
+</script>
+
+<!--
+  For each team we need a script to handle click events on the team menu.
+-->
+{% for menu in site.data.team.menu %}
+
+<script>
+  function team{{ menu.script }}() {
+
+    /* get all .single__member NOT requested and remove .single__member--active */
+    const requestedMembers = document.querySelectorAll(".single__member:not(.team--{{ menu.script }})");
+    for(var i = 0; i < requestedMembers.length; i++)
+      requestedMembers[i].classList.remove('single__member--active');
+
+    /* get all the requested .single__member and add .single__member--active */
+    const hideMembers = document.querySelectorAll(".single__member.team--{{ menu.script }}");
+    for(var i = 0; i < hideMembers.length; i++)
+      hideMembers[i].classList.add('single__member--active');
+
+    /* get all team__title NOT requested and remove .team__title--active */
+    const notTitle = document.querySelectorAll(".team__title:not(.team--js-script-{{ menu.script }})");
+    for(var i = 0; i < notTitle.length; i++)
+      notTitle[i].classList.remove('team__title--active');
+
+    /* get team__title requested and add team__title--active */
+    const requestedTitle = document.querySelectorAll(".team__title.team--js-script-{{ menu.script }}");
+    for(var i = 0; i < requestedTitle.length; i++)
+      requestedTitle[i].classList.add('team__title--active');
+
+}
+</script>
+{% endfor %}
+
+
+<script>
+/* Watch for clicks on more info and reveal text */
+document.querySelectorAll('.info__conceal').forEach(function(el){
+  el.addEventListener('click', function() {
+    this.classList.toggle('info__reveal');
+    var n = this.previousElementSibling;
+    n.classList.toggle('member__info--reveal');
+  });
+});
+
+</script>

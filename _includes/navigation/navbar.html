@@ -1,0 +1,47 @@
+
+<!-- No navigation on landing, we split the diplay with <a's pointing to walk or data. This is done in the landing.html layout. -->
+
+<nav class="navbar">
+
+  <div class="nav-brand">
+    <a href="{{ site.baseurl }}/">
+    {% include /branding/site-logo.svg %}
+    </a>
+  </div>
+
+    <!-- exclude on home -->
+      {% if page.url != "/error-pages/404" %}
+      <!-- exclude on error pages -->
+
+      <!--
+      <ul class="social-media">
+        {% for social in site.socials %}
+        <li class="social-media-item">
+        <a href="{{ social.url }}">
+        <i class="fab fa-{{ social.icon }} social--{{ social.name }} social-media-link"></i></a>
+        </li>
+        {% endfor %}
+      </ul>
+      -->
+
+      <ul class="nav-list">
+        {% for item in site.data.menu.navigation %}
+
+        <li class="nav-group">
+          <a href="{{ item.url | relative_url }}" class="nav-link">
+            <span>{{ item.name }}</span>
+          </a>
+
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="burger">
+        <div class="burger-line-1"></div>
+        <div class="burger-line-2"></div>
+        <div class="burger-line-3"></div>
+      </div>
+    </nav>
+  {% else %}
+    </nav>
+  {% endif %}
