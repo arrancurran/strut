@@ -1,3 +1,6 @@
+@function url-friendly-colour($colour)
+  @return '%23' + str-slice('#{$colour}', 2, -1)
+
 
 // Remove the unit of a length
 // https://css-tricks.com/snippets/sass/strip-unit-function/
