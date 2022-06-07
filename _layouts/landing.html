@@ -14,27 +14,125 @@ Last full read through 02/06/2022
 
 <div class="landing__page">
 
-    <div class="env__text env--walk">
+  <div class="landing__hero">
+    {%- picture {{ page.hero.file | prepend: 'content/' }}
+      --img class="landing__hero-img"
+      --alt {{ }} -%}
+    <div class="landing__copy">
+      <div class="bar_decoration"></div>
+      <div class="landing__copy-wraper">
+        <h1 class="landing__copy-title">{{ page.hero.title }}</h1>
 
-      <a class="landing__link" aria-label="{{ env.aria }}" href="{{ env.url | relative_url }}">
+        <p class="Landing__copy-para">{{ page.hero.copy }}</p>
 
-        <h3 class="landing__title">{{ env.name | upcase }}</h3></a>
+        <a class="landing__cta" aria-label="{{ cta.aria }}" href="{{ page.hero.cta.url }}">
+          <span>{{ page.hero.cta.title }}</span>
+          <!-- svg arrow -->
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+          <polyline points="8 1 12 5 8 9"></polyline></svg>
+        </a>
 
-      <div class="landing__strap">
-        <p>{{ site.data.copy.landing.landing.walk }}</p>
-        <div class="landing__cta">
-        <a class="primary__cta" aria-label="{{ cta.aria }}" href="{{ cta.url | relative_url }}">{{ cta.name }}</a>
-        <a class="secondary__cta" aria-label="{{ cta_2.aria }}" href="{{ cta_2.url | relative_url }}">More Info</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="landing__card-wrapper">
+
+    {% for item in page.cards %}
+      <div class="landing__card">
+        <div class="bar_decoration"></div>
+        <div class="landing__card-img-wrap">
+          {%- picture {{ item.file | prepend: 'content/' }}
+            --img class="landing__card-img"
+            --alt {{ item.alt }} -%}
+        </div>
+
+
+
+        <h3 class="landing__card-title">{{ item.title}}</h3>
+
+        <p class="landing__card-copy">{{ item.copy}}</p>
+
+        <a class="landing__card-cta" aria-label="{{ item.aria }}" href="{{ item.cta.url }}">
+          <span>{{ item.cta }}</span>
+          <!-- svg arrow -->
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline></svg>
+        </a>
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+  <div class="landing__panel">
+    {% assign panel = page.panels[0] %}
+    {%- picture {{ panel.file | prepend: 'content/' }}
+      --img class="landing__panel-img"
+      --alt {{ item.alt }} -%}
+
+      <div class="landing__panel-copy float-copy-right landing__panel-boxed">
+        <div class="bar_decoration"></div>
+        <div class="landing__panel-wraper">
+          <h2 class="landing__panel-title">{{ panel.title }}</h2>
+
+          <p class="landing__panel-para">{{ panel.copy }}</p>
+
+          <a class="landing__panel-cta" aria-label="{{ panel.cta.aria }}" href="{{ panel.cta.url }}">
+            <span>{{ panel.cta.title }}</span>
+            <!-- svg arrow -->
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <polyline points="8 1 12 5 8 9"></polyline></svg>
+          </a>
+
         </div>
       </div>
+  </div>
+
+  <div class="landing__panel-icons">
+
+    <div class="bar_decoration"></div>
+
+    <h1 class="panel-icons-title text-center">{{ page.product.title }}</h1>
+
+    <div class="panel__icons">
+
+      {% for item in page.product.icons %}
+         
+      <div class="icon-wrap" data-aos="fade-in" data-aos-delay="{{ forloop.index | times: 50 }}" data-aos-duration="1000">
+
+        <div class="svg-wrap">
+          <img class="panel__icons-img" src="{{ item.svg | prepend: '/assets/images/content/icon-svgs/' | append: '.svg/'}}">
+        </div>
+
+        <h4>{{ item.title }}</h4>
+      </div>
+      {% endfor %}
 
     </div>
 
-    <div class="hero__overlay env--walk">
-      {%- picture {{ page.hero.file | prepend: 'content/' }}
-        --img class="hero__image hero__filter walk__hero h-100"
-        --alt {{ page.walk.alt }} -%}</div>
+  </div>
 
+
+  <div class="landing__panel">
+
+    {% assign panel = page.panels[1] %}
+    {%- picture {{ panel.file | prepend: 'content/' }}
+      --img class="landing__panel-img"
+      --alt {{ item.alt }} -%}
+
+      <div class="landing__panel-copy float-copy-left">
+        <div class="bar_decoration"></div>
+        <div class="landing__panel-wraper">
+          <h5 class="landing__panel-quote">{{ panel.quote }}</h5>
+
+          <h6 class="landing__panel-author">{{ panel.author }}</h6>
+
+        </div>
+      </div>
+  </div>
 
 
 </div>

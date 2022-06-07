@@ -3,18 +3,24 @@
 
 $baseurl: '{{ site.baseurl }}/'
 
-@import '_variables'
+@import 'mixins'
 
-@import '_mixins'
+@import 'functions'
+
+@import 'navigation/_variables'
 
 @import 'typography/_variables'
 
 @import 'typography/resets'
 
-@import 'typography/branding'
-
-@import '_colors/global'
-
-@import 'aos-overrides'
+@import 'colors'
 
 @import 'global'
+
+@import 'navigation/burger'
+
+@import 'navigation/navbar'
+
+@import 'footer'
+
+@import 'landing'

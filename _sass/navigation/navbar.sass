@@ -1,0 +1,95 @@
+.navbar
+  @include default-trans
+  align-items: center
+  display: flex
+  height: $mobile-navbar-height
+  justify-content: space-between
+  position: fixed
+  top: 0
+  white-space: nowrap
+  width: 100%
+  z-index: 9998
+  background-color: rgba( $pure-white , 1 )
+
+.nav-list
+  border-bottom-left-radius: 80px
+  height: $mobile-nav-list-height
+  height: calc( var(--vh, 1vh) * #{ strip-unit($mobile-nav-list-height)} )
+  list-style: none
+  margin: 0
+  margin-block-start: calc( var(--vh, 1vh) * #{ strip-unit($mobile-navbar-height)} )
+  padding: 0
+  padding-top: 0
+  //position: absolute
+  right: 0
+  top: 0
+  transform: translateX(100%)
+  @include default-trans
+  width: 100vw
+  box-sizing: content-box
+  background-color: $pure-white
+  overflow: scroll
+
+  & > :last-child
+    @include gaitq-cta($opd-coral, $pure-white)
+
+.nav-active
+  // we toggle this class in mobile-nav-slider.js on burger click
+  transform: translateX(0%)
+  box-shadow: -.2px .2px 0 rgba($pure-black, .3)
+
+@media only screen and ( min-width: 1024px )
+  .navbar
+    height: $navbar-height + $navbar-height/2
+
+    .nav-list
+      display: flex
+      justify-content: flex-end
+      align-items: center
+      height: inherit
+      top: 0
+      transform: none
+      border-top: none
+      height: 5vh
+      padding: 0
+      background-color: inherit
+      box-shadow: none
+      margin-block-start: 0
+      padding: 0
+      overflow: visible
+      position: relative
+
+      & > li
+        margin-right: 20px
+
+.nav-brand
+  @include default-trans
+  margin-left: 6vw
+
+  .site__logo
+    height: $navbar-height * 2.6
+
+  .site__logo--group
+    & > *
+      display: none
+      visibility: hidden
+
+  .site__logo__icon,
+  .site__logo__disk
+    display: block
+    visibility: visible
+
+.site__logo__icon
+  fill: white
+
+.site__logo__disk
+  fill: $opd-coral
+
+
+.nav-scrolled
+  height: $navbar-height
+  //background-color: rgba( $pure-white , 0.89 )
+  //backdrop-filter: blur(10px)
+
+  .nav-brand
+    transform: translateY($navbar-height/2)

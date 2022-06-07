@@ -5,6 +5,8 @@ CSS classes
 
 .site__logo
   .site__logo--group
+    .site__logo__disk
+
     .site__logo__icon
       .site__logo--curve
       .site__logo--legvert
@@ -22,9 +24,13 @@ CSS classes
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg class="site__logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0, 0, 203.879, 62.658">
-  <g class="site__logo--group" id="Layer_1" transform="translate(-38.673, -42.934)">
+<svg class="site__logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0, 0, 303.879, 160">
+  <g class="site__logo--group" id="Layer_1" transform="translate(0, 0)">
 
+
+    <g class="site__logo__disk">
+      <circle cx="61" cy="82" r="32"/>
+    </g>
     <g class="site__logo__icon">
       <path class="site__logo--curve" d="M62.853,101.653 C62.844,101.653 62.837,101.656 62.828,101.656 C51.659,101.642 42.608,92.585 42.608,81.413 C42.608,70.248 51.648,61.195 62.808,61.171 C62.813,61.171 62.817,61.172 62.823,61.172 C63.91,61.172 64.793,60.29 64.793,59.203 C64.793,58.125 63.927,57.253 62.853,57.236 L62.853,57.233 C62.845,57.233 62.837,57.234 62.829,57.234 C62.827,57.234 62.825,57.233 62.823,57.233 C62.819,57.233 62.816,57.234 62.813,57.234 C49.477,57.256 38.673,68.072 38.673,81.413 C38.673,94.767 49.499,105.593 62.853,105.593 C63.94,105.593 64.823,104.71 64.823,103.623 C64.823,102.535 63.94,101.653 62.853,101.653" />
 
