@@ -73,14 +73,14 @@ Last full read through 02/06/2022
       --img class="landing__panel-img"
       --alt {{ item.alt }} -%}
 
-      <div class="landing__panel-copy float-copy-right landing__panel-boxed">
-        <div class="bar_decoration"></div>
+      <div class="landing__panel-copy float-copy-right landing__panel-boxed" >
+        <div class="bar_decoration" data-aos="fade-up"></div>
         <div class="landing__panel-wraper">
-          <h2 class="landing__panel-title">{{ panel.title }}</h2>
+          <h2 class="landing__panel-title" data-aos="fade-up">{{ panel.title }}</h2>
 
-          <p class="landing__panel-para">{{ panel.copy }}</p>
+          <p class="landing__panel-para" data-aos="fade-in">{{ panel.copy }}</p>
 
-          <a class="landing__panel-cta" aria-label="{{ panel.cta.aria }}" href="{{ panel.cta.url }}">
+          <a class="landing__panel-cta" aria-label="{{ panel.cta.aria }}" href="{{ panel.cta.url }}" >
             <span>{{ panel.cta.title }}</span>
             <!-- svg arrow -->
             <svg width="13px" height="10px" viewBox="0 0 13 10">
@@ -100,8 +100,8 @@ Last full read through 02/06/2022
     <div class="panel__icons">
 
       {% for item in page.product.icons %}
-
-      <div class="icon-wrap" data-aos="fade-in" data-aos-delay="{{ forloop.index | times: 50 }}" data-aos-duration="1000">
+      {% assign tmp = forloop.index | times: 300 %}
+      <div class="icon-wrap" data-aos="fade-right" data-aos-duration="{{ 1700 | minus: tmp }}" >
 
         <div class="svg-wrap">
           <img class="panel__icons-img" src="{{ item.svg | prepend: '/assets/images/content/icon-svgs/' | append: '.svg'}}">
@@ -124,11 +124,11 @@ Last full read through 02/06/2022
       --alt {{ item.alt }} -%}
 
       <div class="landing__panel-copy float-copy-left">
-        <div class="bar_decoration"></div>
+        <div class="bar_decoration" data-aos="fade-in"></div>
         <div class="landing__panel-wraper">
-          <h5 class="landing__panel-quote">{{ panel.quote }}</h5>
+          <h5 class="landing__panel-quote" data-aos="fade-in">{{ panel.quote }}</h5>
 
-          <h6 class="landing__panel-author">{{ panel.author }}</h6>
+          <h6 class="landing__panel-author" data-aos="fade-in">{{ panel.author }}</h6>
 
         </div>
       </div>
