@@ -1,13 +1,40 @@
 .feed__head
   margin-top: ($navbar-height + $secondary-navbar-height) * 1.5
   width: 100vw
+  background-color: $opd-blue
+  height: 25vh
+  display: flex
+  justify-content: flex-end
+  background: $opd-blue
+  background: linear-gradient(160deg, rgba($opd-blue, 1) 0%, rgba($opd-blue, .8) 50%, rgba($opd-blue, .6) 100%)
+
+.feed__title-wrap
+  //position: relative
+  background-color: rgba($opd-coral, .85)
+  //height: 15vh
+  margin: 0vh 6vw
+  padding: 2rem 10rem
+  display: flex
+  align-items: center
+  height: 15vh
+  position: relative
+
+  &::before
+    content: ''
+    position: absolute
+    top: 5vh
+    left: 5rem
+    width: 1px
+    height: 5vh
+    border-left: 6px solid $pure-white
 
 .feed__title
-  width: 80vw
-  max-width: 1200px
-  margin: auto
-  color: $opd-blue
+  //width: 80vw
+  //max-width: 1200px
 
+  //line-height: 0
+
+  color: $pure-white
 
 .post__feed
   display: flex

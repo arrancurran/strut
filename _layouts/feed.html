@@ -7,13 +7,15 @@ layout: default
 
 <section class="feed__head">
 
-<h1 class="feed__title">
-  {{ page.title }}
-</h1>
-
+  <div class="feed__title-wrap">
+    <h1 class="feed__title">
+      {{ page.title }}
+    </h1>
+  </div>
 
 </section>
 
+<!--
 <div class="post__feed" id="content">
 
   {% for post in site.posts %}
@@ -40,3 +42,35 @@ layout: default
 
 
 </div>
+-->
+
+
+<section class="portfolio-wraper">
+
+  <div class="portfolio-panel">
+
+    {% for post in site.posts %}
+    <a href="{{ post.url }}">
+      <div class="portfolio-item" data-aos="fade-in">
+
+        <div class="portfolio-image" style="background-image: url( '/assets/images/posts/{{ post.hero }}' )"></div>
+
+        <div class="portfolio-card-wrapper">
+
+          <div class="portfolio-card">
+
+            <h2 class="portfolio-title">{{ post.title }}</h2>
+
+            <p class="feed__card--meta">Published <span>{{ post.date | date: "%b %d, %Y" }}</span></p>
+
+            <h6 class="portfolio-description">{{ post.content | strip_html | truncatewords: '20' }}</h6>
+
+          </div>
+        </div>
+
+      </div>
+    </a>
+    {% endfor %}
+
+  </div>
+</section>
