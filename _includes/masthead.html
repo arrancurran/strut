@@ -1,0 +1,18 @@
+
+{% assign strap = page.title %}
+
+
+<section class="hero__head" style="background-image: url( '/assets/images/content/{{ page.hero.file }}'">
+
+  <header class="hero__title-wrap" aria-label="{{ strap }}">
+
+      <h1 aria-hidden="true" class="hero__title">
+      {% assign n = strap.size | minus: 1 %}
+      {%- for char in (0..n ) -%}
+
+      <span style="animation-delay: {{ char | times: 40 | plus: 200 }}ms;">{{ strap | slice: char }}</span>
+      {%- endfor -%}</h1>
+
+  </header>
+
+</section>
