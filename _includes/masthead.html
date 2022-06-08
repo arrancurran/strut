@@ -2,7 +2,12 @@
 {% assign strap = page.title %}
 
 
-<section class="hero__head" style="background-image: url( '/assets/images/content/{{ page.hero.file }}'">
+<section class="hero__head"
+{% if page.hero %}
+style="background-image: url( '/assets/images/content/{{ page.hero.file }}')"
+
+{% endif %}
+>
 
   <header class="hero__title-wrap" aria-label="{{ strap }}">
 
