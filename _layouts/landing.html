@@ -21,7 +21,7 @@ Last full read through 02/06/2022
     <div class="landing__copy">
       <div class="bar_decoration"></div>
       <div class="landing__copy-wraper">
-        <h1 class="landing__copy-title">{{ page.hero.title }}</h1>
+        <h2 class="landing__copy-title">{{ page.hero.title }}</h2>
 
         <p class="Landing__copy-para">{{ page.hero.copy }}</p>
 
@@ -95,16 +95,16 @@ Last full read through 02/06/2022
 
     <div class="bar_decoration"></div>
 
-    <h1 class="panel-icons-title text-center">{{ page.product.title }}</h1>
+    <h2 class="panel-icons-title text-center">{{ page.product.title }}</h2>
 
     <div class="panel__icons">
 
       {% for item in page.product.icons %}
-         
+
       <div class="icon-wrap" data-aos="fade-in" data-aos-delay="{{ forloop.index | times: 50 }}" data-aos-duration="1000">
 
         <div class="svg-wrap">
-          <img class="panel__icons-img" src="{{ item.svg | prepend: '/assets/images/content/icon-svgs/' | append: '.svg/'}}">
+          <img class="panel__icons-img" src="{{ item.svg | prepend: '/assets/images/content/icon-svgs/' | append: '.svg'}}">
         </div>
 
         <h4>{{ item.title }}</h4>
