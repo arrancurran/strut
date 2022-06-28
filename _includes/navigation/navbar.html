@@ -5,43 +5,49 @@
 
   <div class="nav-brand">
     <a href="{{ site.baseurl }}/">
-    {% include /branding/site-logo.svg %}
+
+      <svg class="site__logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0, 0, 160, 160">
+        <g class="site__logo--group" id="Layer_1" transform="translate(0, 0)">
+
+          <g class="site__logo__disk">
+            <circle cx="61" cy="82" r="32"/>
+          </g>
+
+          <g class="site__logo__icon">
+            <path class="site__logo--curve" d="M62.853,101.653 C62.844,101.653 62.837,101.656 62.828,101.656 C51.659,101.642 42.608,92.585 42.608,81.413 C42.608,70.248 51.648,61.195 62.808,61.171 C62.813,61.171 62.817,61.172 62.823,61.172 C63.91,61.172 64.793,60.29 64.793,59.203 C64.793,58.125 63.927,57.253 62.853,57.236 L62.853,57.233 C62.845,57.233 62.837,57.234 62.829,57.234 C62.827,57.234 62.825,57.233 62.823,57.233 C62.819,57.233 62.816,57.234 62.813,57.234 C49.477,57.256 38.673,68.072 38.673,81.413 C38.673,94.767 49.499,105.593 62.853,105.593 C63.94,105.593 64.823,104.71 64.823,103.623 C64.823,102.535 63.94,101.653 62.853,101.653" />
+
+            <path class="site__logo--legvert" d="M62.855,105.593 C61.768,105.593 60.887,104.711 60.887,103.625 L60.887,82.648 C60.887,81.561 61.768,80.681 62.855,80.681 C63.941,80.681 64.823,81.561 64.823,82.648 L64.823,103.625 C64.823,104.711 63.941,105.593 62.855,105.593" />
+
+            <path class="site__logo--leg45" d="M79.079,98.873 C78.311,99.641 77.065,99.641 76.296,98.873 L61.463,84.04 C60.695,83.271 60.695,82.025 61.463,81.257 C62.232,80.488 63.478,80.488 64.246,81.257 L79.079,96.089 C79.847,96.858 79.847,98.104 79.079,98.873" />
+          </g>
+
+        </g>
+      </svg>
     </a>
   </div>
 
-    <!-- exclude on home -->
-      {% if page.url != "/error-pages/404" %}
-      <!-- exclude on error pages -->
+  <ul class="social-media">
+    {% for social in site.socials %}
+    <li class="social-media-item">
+    <a href="{{ social.url }}">
+    <i class="fab fa-{{ social.icon }} social--{{ social.name }} social-media-link"></i></a>
+    </li>
+    {% endfor %}
+  </ul>
 
-      <!--
-      <ul class="social-media">
-        {% for social in site.socials %}
-        <li class="social-media-item">
-        <a href="{{ social.url }}">
-        <i class="fab fa-{{ social.icon }} social--{{ social.name }} social-media-link"></i></a>
-        </li>
-        {% endfor %}
-      </ul>
-      -->
 
-      <ul class="nav-list">
-        {% for item in site.data.menu.navigation %}
+  <ul class="nav-list">
+    {% for item in site.data.menu.navigation %}
+    <li class="nav-group">
+    <a href="{{ item.url | relative_url }}" class="nav-link">
+    <span>{{ item.name }}</span></a>
+    </li>
+    {% endfor %}
+  </ul>
 
-        <li class="nav-group">
-          <a href="{{ item.url | relative_url }}" class="nav-link">
-            <span>{{ item.name }}</span>
-          </a>
-
-        </li>
-        {% endfor %}
-      </ul>
-
-      <div class="burger">
-        <div class="burger-line-1"></div>
-        <div class="burger-line-2"></div>
-        <div class="burger-line-3"></div>
-      </div>
-    </nav>
-  {% else %}
-    </nav>
-  {% endif %}
+  <div class="burger">
+    <div class="burger-line-1"></div>
+    <div class="burger-line-2"></div>
+    <div class="burger-line-3"></div>
+  </div>
+</nav>
