@@ -15,25 +15,85 @@ Last full read through 02/06/2022
 <div class="landing__page">
 
   <div class="landing__hero">
-    {%- picture {{ page.hero.file | prepend: 'content/' }}
-      --img class="landing__hero-img"
-      --alt {{ }} -%}
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="974.591" height="1000" viewBox="0, 0, 974.591, 1000">
+      <g id="Layer_1" transform="translate(-12.705, 0)">
+        <path d="M987.295,500 C987.295,776.142 769.126,1000 500,1000 C230.874,1000 12.705,776.142 12.705,500 C12.705,223.858 230.874,-0 500,-0 C769.126,-0 987.295,223.858 987.295,500 z" fill="#BA5858" fill-opacity="1"/>
+        <g>
+          <path d="M528.217,807.078 C528.08,807.078 527.974,807.125 527.837,807.125 C357.755,806.906 219.927,665.391 219.927,490.828 C219.927,316.375 357.588,174.922 527.532,174.547 C527.608,174.547 527.669,174.562 527.761,174.562 C544.313,174.562 557.76,160.781 557.76,143.797 C557.76,126.953 544.572,113.328 528.217,113.062 L528.217,113.016 C528.096,113.016 527.974,113.031 527.852,113.031 C527.822,113.031 527.791,113.016 527.761,113.016 C527.7,113.016 527.654,113.031 527.608,113.031 C324.528,113.375 160.005,282.375 160.005,490.828 C160.005,699.484 324.863,868.641 528.217,868.641 C544.77,868.641 558.217,854.844 558.217,837.859 C558.217,820.859 544.77,807.078 528.217,807.078" fill="#FFFFFF"/>
+          <path d="M528.248,868.641 C511.695,868.641 498.279,854.859 498.279,837.891 L498.279,510.125 C498.279,493.141 511.695,479.391 528.248,479.391 C544.785,479.391 558.217,493.141 558.217,510.125 L558.217,837.891 C558.217,854.859 544.785,868.641 528.248,868.641" fill="#FFFFFF"/>
+          <path d="M775.307,763.641 C763.612,775.641 744.638,775.641 732.927,763.641 L507.051,531.875 C495.355,519.859 495.355,500.391 507.051,488.391 C518.761,476.375 537.735,476.375 549.43,488.391 L775.307,720.141 C787.002,732.156 787.002,751.625 775.307,763.641" fill="#FFFFFF"/>
+        </g>
+      </g>
+    </svg>
+
     <div class="landing__copy">
+
       <div class="bar_decoration"></div>
       <div class="landing__copy-wraper">
+
         <h2 class="landing__copy-title">{{ page.hero.title }}</h2>
 
         <p class="Landing__copy-para">{{ page.hero.copy }}</p>
 
+        {%- picture {{ page.devices.device_1 | prepend: 'content/' }}
+          --img class="landing__device-img"
+          --alt {{ item.alt }} -%}
+
+        <!--
         <a class="landing__cta" aria-label="{{ cta.aria }}" href="{{ page.hero.cta.url }}">
           <span>{{ page.hero.cta.title }}</span>
-          <!-- svg arrow -->
+
           <svg width="13px" height="10px" viewBox="0 0 13 10">
           <polyline points="8 1 12 5 8 9"></polyline></svg>
         </a>
+        -->
 
       </div>
     </div>
+
+  </div>
+
+  <div class="landing__featured">
+
+      <div class="portfolio-panel">
+        {% assign count = 0 %}
+        {% for post in site.posts %}
+          {% if post.categories contains "featured" and count <= 2 %}
+
+          <a href="{{ post.url }}">
+            <div class="portfolio-item" data-aos="fade-in">
+
+              <div class="portfolio-image" style="background-image: url( '/assets/images/posts/{{ post.hero }}' )"></div>
+
+              <div class="portfolio-card-wrapper">
+
+                <div class="portfolio-card">
+
+                  <h4 class="portfolio-title">{{ post.title }}</h4>
+
+                  <p class="feed__card--meta"><span>{{ post.date | date: "%b %d, %Y" }}</span></p>
+
+                  <h6 class="portfolio-description">{{ post.content | strip_html | truncatewords: '20' }}</h6>
+
+                </div>
+              </div>
+
+            </div>
+          </a>
+
+        {% assign count = count | plus: 1 %}
+
+
+
+        {% endif %}
+
+        {% endfor %}
+
+      </div>
+
 
   </div>
 
@@ -48,9 +108,7 @@ Last full read through 02/06/2022
             --alt {{ item.alt }} -%}
         </div>
 
-
-
-        <h3 class="landing__card-title">{{ item.title}}</h3>
+        <h4 class="landing__card-title">{{ item.title}}</h4>
 
         <p class="landing__card-copy">{{ item.copy}}</p>
 
