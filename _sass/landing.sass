@@ -1,197 +1,25 @@
+$landing-panel-height: 65vh
 
-$landing-panel-height: 45vh
+@import landing-hero
 
+@import landing-featured
 
-.landing__hero
-  //height: 80vh
-  //overflow: hidden
+@import landing-users
 
-.landing__hero-img
-  width: 100vw
-  height: 90vh
-  object-fit: cover
+@import landing-credibility
 
-.landing__copy
-  position: absolute
-  top: 35vh
-  left: 5vw
-  width: 40vw
-  display: flex
-  align-items: baseline
+@import landing-icons
 
-.landing__copy-wraper
-  display: flex
-  flex-direction: column
+@import landing-testimonial
 
-  & > *
-    margin-bottom: 1rem
-
-.landing__copy-title
-  color: $pure-white
-
-.Landing__copy-para
-  color: $pure-white
-
-.bar_decoration
-  background-color: $opd-coral
-  height: 50px
-  margin: 0
-  width: 6px
-  min-width: 6px
-  margin-right: 12px
-
-
-// This is basically a button and should to be centralised
-.landing__cta
-
-  align-self: flex-end
-  @include gaitq-cta($opd-coral, $pure-white)
-
-  svg
-    fill: none
-    margin-left: 10px
-    position: relative
-    stroke-linecap: round
-    stroke-linejoin: round
-    stroke-width: 2
-    top: 0
-    transform: translateX(-10px)
-    transition: .2s ease
-    stroke: $pure-white
-
-  &:hover
-    svg
-      transform: translateX(0)
-
-.landing__card-wrapper
-  margin: 0
-  margin-top: -10vh
-  display: flex
-  justify-content: space-around
-  padding: 0 10vw
-
-  & > :nth-child(even)
-    .landing__card-title, .landing__card-cta
-      color: $opd-blue
-    svg
-      stroke: $opd-blue
-
-    .bar_decoration
-      background-color: $opd-blue
-
-  & > :nth-child(odd)
-    .landing__card-title, .landing__card-cta
-      color: $opd-coral
-
-    svg
-      stroke: $opd-coral
-
-    .bar_decoration
-      background-color: $opd-coral
-
-.landing__card
-  width: 20vw
-  max-width: 400px
-  margin-top: -55px
-
-
-  .bar_decoration
-    transform: translateY(15px)
-    position: relative
-    bottom: -18vw
-    left: 2vw
-    z-index: 2
-
-  svg
-    fill: none
-    margin-left: 10px
-    position: relative
-    stroke-linecap: round
-    stroke-linejoin: round
-    stroke-width: 2
-    top: 0
-    transform: translateX(-10px)
-    @include default-trans
-
-
-  &:hover
-    .landing__card-img
-      transform: scale(1.02)
-
-    svg
-      transform: translateX(0)
-
-.landing__card-img-wrap
-  overflow: hidden
-
-.landing__card-img
-  width: 20vw
-  height: 18vw
-  object-fit: cover
-  //border: 1px solid $soft-black
-  border-radius: 2px
-  box-shadow: 2px 2px 6px rgba($pure-black, .2)
-  @include default-trans
-  //transform: scale(1)
-  z-index: 1
-
-.landing__card-title
-  margin-top: 18px
-
-.landing__card-copy
-  margin: 18px 0
-
-.landing__card-cta > span
-  padding-right: 10px
+.has__bar-decoration
+  &::before
+    @include bar-decoration($opd-coral, 50px)
 
 .landing__panel
   width: 100vw
-  margin-top: 100px
   height: $landing-panel-height
 
-.landing__panel-img
-  height: $landing-panel-height
-  width: 100%
-  object-fit: cover
-  display: block
-
-
-
-.float-copy-right
-  left: 55vw
-
-.float-copy-left
-  right: -5vw
-
-.landing__panel-boxed
-  background-color: rgba($opd-coral, .85)
-  color: $pure-white
-
-  .bar_decoration
-    background-color: $pure-white
-    height: 55px
-    margin: 0
-    width: 7px
-    min-width: 7px
-    margin-right: 12px
-
-.landing__panel-copy
-  position: relative
-  top: -$landing-panel-height
-  width: 40vw
-  display: flex
-  align-items: baseline
-  padding: 4rem 4rem 0 4rem
-
-.landing__panel-wraper
-  display: flex
-  flex-direction: column
-
-.landing__panel-title, .landing__panel-quote
-  margin-bottom: 1rem
-
-.landing__panel-author
-  align-self: flex-end
 // This is basically a button and should to be centralised
 .landing__panel-cta
   transform: translateY(1.5rem)
@@ -213,41 +41,3 @@ $landing-panel-height: 45vh
   &:hover
     svg
       transform: translateX(0)
-
-.landing__panel-icons
-  display: flex
-  flex-direction: column
-  margin-top: 100px
-
-  .bar_decoration
-    margin: 0 auto
-
-.panel__icons
-  width: 95vh
-  max-width: 1000px
-  display: flex
-  justify-content: space-between
-  margin: 0 auto
-  margin-top: 8rem
-.svg-wrap
-  display: flex
-  justify-content: center
-  align-items: center
-  background-color: $opd-coral
-  border-radius: 9999px
-  width: 15vh
-  height: 15vh
-  margin-bottom: 3rem
-
-.panel__icons
-  & > :first-child
-    .svg-wrap
-      background-color: $pure-white
-      border: 3px solid $opd-coral
-
-.panel__icons-img
-  width: auto
-  height: 8vh
-
-.icon-wrap
-  text-align: center

@@ -11,6 +11,16 @@
   z-index: 9998
   background-color: rgba( $pure-white , 1 )
 
+  .social-media
+    margin-left: 3vw
+    z-index: inherit
+    list-style: none
+    display: flex
+
+  .social-media-link
+    font-size: $font-size
+    padding-right: $font-size
+
 .nav-list
   border-bottom-left-radius: 80px
   height: $mobile-nav-list-height
@@ -20,10 +30,10 @@
   margin-block-start: calc( var(--vh, 1vh) * #{ strip-unit($mobile-navbar-height)} )
   padding: 0
   padding-top: 0
-  //position: absolute
+  position: absolute
   right: 0
   top: 0
-  transform: translateX(100%)
+  transform: translateX(100vw)
   @include default-trans
   width: 100vw
   box-sizing: content-box
@@ -33,34 +43,46 @@
   & > :last-child
     @include gaitq-cta($opd-coral, $pure-white)
 
+.nav-link
+  margin: 6vh 15vw
+  opacity: 0
+  text-decoration: none
+  display: flex
+
 .nav-active
   // we toggle this class in mobile-nav-slider.js on burger click
-  transform: translateX(0%)
+  transform: translateX(0)
   box-shadow: -.2px .2px 0 rgba($pure-black, .3)
 
 @media only screen and ( min-width: 1024px )
+
   .navbar
     height: $navbar-height + $navbar-height/2
 
-    .nav-list
-      display: flex
-      justify-content: flex-end
-      align-items: center
-      height: inherit
-      top: 0
-      transform: none
-      border-top: none
-      height: 5vh
-      padding: 0
-      background-color: inherit
-      box-shadow: none
-      margin-block-start: 0
-      padding: 0
-      overflow: visible
-      position: relative
+  .nav-list
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    align-items: center
+    height: inherit
+    top: 0
+    transform: none
+    border-top: none
+    height: 5vh
+    padding: 0
+    background-color: inherit
+    box-shadow: none
+    margin-block-start: 0
+    padding: 0
+    overflow: visible
+    position: relative
 
-      & > li
-        margin-right: 20px
+  .nav-group
+    margin-right: 20px
+
+  .nav-link
+    opacity: 1
+    margin: 0
 
 .nav-brand
   @include default-trans
@@ -68,11 +90,6 @@
 
   .site__logo
     height: $navbar-height * 2.6
-
-  .site__logo--group
-    & > *
-      display: none
-      visibility: hidden
 
   .site__logo__icon,
   .site__logo__disk

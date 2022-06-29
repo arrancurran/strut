@@ -1,0 +1,86 @@
+
+.landing__featured
+  margin: 0 5vw
+
+.landing__featured-header
+  font-size: 8vw
+  margin-bottom: 6rem
+
+.landing__featured-panel
+  display: flex
+  flex-direction: column
+  row-gap: 6rem
+
+.landing__featured-image
+  display: none
+
+.landing__featured-title
+  color: $opd-coral
+  padding: 0
+
+.landing__featured-strap
+  display: none
+
+.landing__featured-description
+  display: none
+
+@media screen and ( min-width: 768px )
+
+  .landing__featured
+    padding: 15vh 0
+
+    .landing__featured-header
+      font-size: 6rem
+
+    .landing__featured-panel
+      display: flex
+      flex-direction: row
+      column-gap: 5vw
+      background-color: $pure-white
+
+    .landing__featured-item
+      display: flex
+      flex-direction: column
+      width: 26.66vw
+      overflow: hidden
+
+      &:hover
+        .landing__featured-image
+          transform: scale(1.2)
+
+        .landing__featured-card
+          transform: translateY(-10px)
+
+    .landing__featured-image
+      display: block
+      background-position: top
+      background-size: cover
+      height: 40vh
+      transition: transform 2s cubic-bezier(.2 , .3, 0, 1)
+
+    .landing__featured-card-wrapper
+      background-color: $white
+      padding: 0 10px 10px
+      z-index: 1
+      width: 100%
+
+    .landing__featured-card
+      background-color: $pure-white
+      border-radius: 5px
+      box-shadow: 0 6px 16px rgba(0, 0, 0, .2)
+      display: flex
+      flex-direction: column
+      margin-top: -15vh
+      padding: 2rem 1rem
+      transition: transform 2s cubic-bezier(.2, .3, 0, 1)
+
+    .landing__featured-title
+
+      margin: 0 0 5px 10px
+      padding: 0
+
+    .landing__featured-description
+      display: block
+      color: $soft-black
+      min-height: 100%
+      margin-top: 1rem

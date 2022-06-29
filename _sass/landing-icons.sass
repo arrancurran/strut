@@ -1,0 +1,35 @@
+
+.landing__icons
+  display: flex
+  flex-direction: row
+  width: 100vw
+  max-width: 1000px
+  flex-wrap: wrap
+  justify-content: space-around
+  margin: 10rem auto
+
+.landing__icons-title
+  width: 100%
+
+.landing__icons-svg-wrap
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: $opd-coral
+  border-radius: 9999px
+  width: 15vh
+  height: 15vh
+  margin-bottom: 2rem
+
+.landing__icons
+  & > div:first-of-type
+    .landing__icons-svg-wrap
+      background-color: $pure-white
+      border: 3px solid $opd-coral
+
+.landing__icons-img
+  width: auto
+  height: 8vh
+
+.landing__icons-wrap
+  text-align: center

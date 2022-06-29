@@ -31,12 +31,13 @@ Last full read through 02/06/2022
 
     <div class="landing__copy">
 
-      <div class="bar_decoration"></div>
+
       <div class="landing__copy-wraper">
 
-        <h2 class="landing__copy-title">{{ page.hero.title }}</h2>
 
-        <p class="Landing__copy-para">{{ page.hero.copy }}</p>
+        <h1 class="landing__copy-title has__bar-decoration">{{ page.hero.title }}</h1>
+
+        <p class="landing__copy-para">{{ page.hero.copy }}</p>
 
         {%- picture {{ page.devices.device_1 | prepend: 'content/' }}
           --img class="landing__device-img"
@@ -56,27 +57,83 @@ Last full read through 02/06/2022
 
   </div>
 
+  <div class="landing__users-wrapper" data-aos="msa-fade-up">
+    <!--
+    <h2 class="has__bar-decoration landing__users-header">gaitQ is for</h2>
+    -->
+    {% for item in page.cards %}
+      <div class="landing__users">
+
+        <div class="landing__users-img-wrap">
+          {%- picture {{ item.file | prepend: 'content/' }}
+            --img class="landing__users-img"
+            --alt {{ item.alt }} -%}
+        </div>
+
+        <h4 class="landing__users-title">{{ item.title}}</h4>
+
+        <p class="landing__users-copy">{{ item.copy}}</p>
+
+        <a class="landing__users-cta" aria-label="{{ item.aria }}" href="{{ item.cta.url }}">
+          <span>{{ item.cta }}</span>
+          <!-- svg arrow -->
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline></svg>
+        </a>
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+
+  <div class="landing__panel landing__credibility">
+    {% assign panel = page.panels[0] %}
+    {%- picture {{ panel.file | prepend: 'content/' }}
+      --img class="landing__credibility-img"
+      --alt {{ item.alt }} -%}
+
+      <div class="landing__credibility-copy float-copy-right" >
+
+          <h2 class="landing__credibility-title" data-aos="fade-up">{{ panel.title }}</h2>
+
+          <p class="landing__credibility-para" data-aos="fade-in">{{ panel.copy }}</p>
+
+          <a class="landing__credibility-cta" aria-label="{{ panel.cta.aria }}" href="{{ panel.cta.url }}" >
+            <span>{{ panel.cta.title }}</span>
+            <!-- svg arrow -->
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <polyline points="8 1 12 5 8 9"></polyline></svg>
+          </a>
+
+
+      </div>
+  </div>
+
   <div class="landing__featured">
 
-      <div class="portfolio-panel">
+      <h2 class="has__bar-decoration landing__featured-header">Featured news</h2>
+
+      <div class="landing__featured-panel">
         {% assign count = 0 %}
         {% for post in site.posts %}
           {% if post.categories contains "featured" and count <= 2 %}
 
           <a href="{{ post.url }}">
-            <div class="portfolio-item" data-aos="fade-in">
+            <div class="landing__featured-item" data-aos="fade-in">
 
-              <div class="portfolio-image" style="background-image: url( '/assets/images/posts/{{ post.hero }}' )"></div>
+              <div class="landing__featured-image" style="background-image: url( '/assets/images/posts/{{ post.hero }}' )"></div>
 
-              <div class="portfolio-card-wrapper">
+              <div class="landing__featured-card-wrapper">
 
-                <div class="portfolio-card">
+                <div class="landing__featured-card">
 
-                  <h4 class="portfolio-title">{{ post.title }}</h4>
+                  <h3 class="landing__featured-title">{{ post.title }}</h3>
 
                   <p class="feed__card--meta"><span>{{ post.date | date: "%b %d, %Y" }}</span></p>
 
-                  <h6 class="portfolio-description">{{ post.content | strip_html | truncatewords: '20' }}</h6>
+                  <h6 class="landing__featured-description">{{ post.content | strip_html | truncate: '70' }}</h6>
 
                 </div>
               </div>
@@ -97,100 +154,44 @@ Last full read through 02/06/2022
 
   </div>
 
-  <div class="landing__card-wrapper">
 
-    {% for item in page.cards %}
-      <div class="landing__card">
-        <div class="bar_decoration"></div>
-        <div class="landing__card-img-wrap">
-          {%- picture {{ item.file | prepend: 'content/' }}
-            --img class="landing__card-img"
-            --alt {{ item.alt }} -%}
-        </div>
+  <div class="landing__panel landing__icons">
 
-        <h4 class="landing__card-title">{{ item.title}}</h4>
+    <h2 class="landing__icons-title text-center">
+      {{ page.product.title }}
+    </h2>
 
-        <p class="landing__card-copy">{{ item.copy}}</p>
 
-        <a class="landing__card-cta" aria-label="{{ item.aria }}" href="{{ item.cta.url }}">
-          <span>{{ item.cta }}</span>
-          <!-- svg arrow -->
-          <svg width="13px" height="10px" viewBox="0 0 13 10">
-          <path d="M1,5 L11,5"></path>
-          <polyline points="8 1 12 5 8 9"></polyline></svg>
-        </a>
+    {% for item in page.product.icons %}
+    {% assign tmp = forloop.index | minus: 1 | times: 150 %}
 
+    <div class="landing__icons-wrap" data-aos="fade-up" data-aos-delay="{{ tmp }}" data-aos-duration="600">
+
+      <div class="landing__icons-svg-wrap">
+        <img class="landing__icons-img" src="{{ item.svg | prepend: '/assets/images/content/icon-svgs/' | append: '.svg'}}">
       </div>
 
-    {% endfor %}
-  </div>
-
-  <div class="landing__panel">
-    {% assign panel = page.panels[0] %}
-    {%- picture {{ panel.file | prepend: 'content/' }}
-      --img class="landing__panel-img"
-      --alt {{ item.alt }} -%}
-
-      <div class="landing__panel-copy float-copy-right landing__panel-boxed" >
-        <div class="bar_decoration" data-aos="fade-up"></div>
-        <div class="landing__panel-wraper">
-          <h2 class="landing__panel-title" data-aos="fade-up">{{ panel.title }}</h2>
-
-          <p class="landing__panel-para" data-aos="fade-in">{{ panel.copy }}</p>
-
-          <a class="landing__panel-cta" aria-label="{{ panel.cta.aria }}" href="{{ panel.cta.url }}" >
-            <span>{{ panel.cta.title }}</span>
-            <!-- svg arrow -->
-            <svg width="13px" height="10px" viewBox="0 0 13 10">
-            <polyline points="8 1 12 5 8 9"></polyline></svg>
-          </a>
-
-        </div>
-      </div>
-  </div>
-
-  <div class="landing__panel-icons">
-
-    <div class="bar_decoration"></div>
-
-    <h2 class="panel-icons-title text-center">{{ page.product.title }}</h2>
-
-    <div class="panel__icons">
-
-      {% for item in page.product.icons %}
-      {% assign tmp = forloop.index | times: 300 %}
-      <div class="icon-wrap" data-aos="fade-right" data-aos-duration="{{ 1700 | minus: tmp }}" >
-
-        <div class="svg-wrap">
-          <img class="panel__icons-img" src="{{ item.svg | prepend: '/assets/images/content/icon-svgs/' | append: '.svg'}}">
-        </div>
-
-        <h4>{{ item.title }}</h4>
-      </div>
-      {% endfor %}
-
+      <h4>{{ item.title }}</h4>
     </div>
+    {% endfor %}
 
   </div>
 
-
-  <div class="landing__panel">
+  <div class="landing__panel landing__testimonial">
 
     {% assign panel = page.panels[1] %}
     {%- picture {{ panel.file | prepend: 'content/' }}
-      --img class="landing__panel-img"
+      --img class="landing__testimonial-img"
       --alt {{ item.alt }} -%}
 
-      <div class="landing__panel-copy float-copy-left">
-        <div class="bar_decoration" data-aos="fade-in"></div>
-        <div class="landing__panel-wraper">
-          <h5 class="landing__panel-quote" data-aos="fade-in">{{ panel.quote }}</h5>
+      <div class="landing__testimonial-copy float-copy-left">
 
-          <h6 class="landing__panel-author" data-aos="fade-in">{{ panel.author }}</h6>
+        <div class="landing__testimonial-wraper">
+          <h5 class="landing__testimonial-quote" data-aos="fade-in">{{ panel.quote }}</h5>
+          <h6 class="landing__testimonial-author" data-aos="fade-in">{{ panel.author }}</h6>
 
         </div>
       </div>
   </div>
-
 
 </div>
