@@ -2,7 +2,8 @@
 .landing__hero
   height: 100vh
   background: rgb(179,163,171)
-  background: linear-gradient(160deg, rgba(179,163,171,1) 0%, rgba(154,151,160,1) 50%, rgba(107,114,126,1) 100%)
+  background: $opd-blue
+  //background: linear-gradient(160deg, rgba(179,163,171,1) 0%, rgba(154,151,160,1) 50%, rgba(107,114,126,1) 100%)
 
   & > svg
     position: absolute
@@ -14,29 +15,30 @@
 
 .landing__copy
   width: 100vw
-  padding: 5vw 5vh
+  padding: 5vh 5vw
 
 .landing__copy-wraper
   position: relative
   height: 75vh
   top: 15vh
+  color: $pure-white
 
 .landing__copy-title
-  color: $pure-white
+  color: inherit
   font-size: 7.4vw
   font-weight: 400
   width: 100%
 
   & > span
     display: inline-block
-    color: $soft-white
+    color: inherit
     font-weight: 300
     font-size: 7.4vw
     opacity: 1
 
 .landing__copy-para
   position: absolute
-  color: $soft-white
+  color: inherit
   font-size: 5vw
   font-weight: 400
   width: 100%
@@ -83,7 +85,7 @@
   &:hover
     svg
       transform: translateX(0)
-      
+
 
 @media screen and ( min-width: 768px )
 
@@ -91,18 +93,16 @@
     width: 90vh
 
   .landing__copy-wraper
-    height: 70vh
-    top: 10vh
+    height: 65vh
+    top: 20vh
 
   .landing__copy-title
-    color: $pure-white
     font-size: 3.2vw
     font-weight: 400
     width: 80%
 
     & > span
       display: inline-block
-      color: $soft-white
       font-size: 3.2vw
       font-weight: 300
       margin-top: -4.8vw
@@ -130,7 +130,6 @@
 
   .landing__copy-para
     position: absolute
-    color: $soft-white
     font-size: 1.9vw
     font-weight: 400
     width: 35%
