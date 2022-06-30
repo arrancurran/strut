@@ -1,0 +1,78 @@
+.about__hero
+  height: 100vh
+  width: 100vw
+  overflow: hidden
+
+.about__hero-left
+  position: absolute
+  top: 0
+  height: 100vh
+  width: 100vw
+  background-color: rgba($opd-blue, .85)
+
+.about__hero-right
+  position: absolute
+  top: 0
+  left: 65vw
+  height: 100vh
+  width: 35vw
+  background-color: rgba($opd-coral, .85)
+  transform: translateX(35vw)
+  animation: about_panel_slide_left .6s ease-out 0s forwards
+
+@keyframes about_panel_slide_left
+  0%
+    transform: translateX(35vw)
+
+  100%
+    transform: translateX(0)
+
+.about__hero-title
+  position: absolute
+  top: 20vh
+  left: 5vw
+  color: $pure-white
+  width: 55vw
+
+.about__hero-info
+  position: relative
+  top: 5vh
+  left: 3rem
+  color: $pure-white
+  width: 35vw
+  font-size: 2rem
+  line-height: 3.2rem
+
+.about__hero-image
+  filter: opacity(1)
+
+.about__hero-video
+  position: absolute
+  width: 30vw
+  height: auto
+  bottom: 10vh
+  right: 15vw
+  transform: translateX(55vw)
+  animation: about_video_slide_in .6s ease-out 1s forwards
+
+@keyframes about_video_slide_in
+  0%
+    transform: translateX(55vw)
+
+  100%
+    transform: translateX(0)
+
+
+.about__copy
+  width: 65vw
+  margin: 8vh auto
+  margin-top: -8vh
+
+.about__copy-text
+  padding: 8rem 10rem
+  color: $opd-blue
+  background-color: $pure-white
+  border-radius: 12px
+  font-size: 2rem
+  line-height: 3.6rem
+  border: solid 1px rgba($pure-black,.1)

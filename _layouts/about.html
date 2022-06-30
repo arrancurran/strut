@@ -12,51 +12,45 @@ Last full read through 29/12/2020
 
 -->
 
-{% if site.data.copy.about[page.env].title %}
-{% assign strap = site.data.copy.about[page.env].title %}
+{% if site.data.copy.about.title %}
+{% assign strap = site.data.copy.about.title %}
 {% else %}
 {% assign strap = site.description %}
 {% endif %}
 
-<div class="hero hero-65">
+<div class="about__hero">
 
-  <div class="hero__overlay h-100">
+  <div class="about__hero-overlay">
     {% picture {{ page.hero.file | prepend: 'content/' }}
-      --img class="hero__image hero__image--fixed hero-65"
-      --alt {{ page.hero.alt }} %}</div>
+      --img class="about__hero-image"
+      --alt {{ page.hero.alt }} %}
+  </div>
 
-  <header class="hero__strap hero__strap--center image__filter--blur hero-65" aria-label="{{ strap }}">
+  <div class="about__hero-left"></div>
+  <div class="about__hero-right"></div>
 
-      <h1 aria-hidden="true" >
-      {% assign n = strap.size | minus: 1 %}
-      {%- for char in (0..n ) -%}
-
-      <span style="animation-delay: {{ char | times: 40 | plus: 200 }}ms;">{{ strap | slice: char }}</span>
-      {%- endfor -%}</h1>
-
+  <header class="about__hero-title" aria-label="{{ strap }}">
+    <h1 aria-hidden="true" >{{ strap }}</h1>
+    <p class="about__hero-info">
+      {{ site.data.copy.about.intro }}
+    </p>
   </header>
+
+  <div class="about__hero-video">
+    {% include vimeoPlayer.html id="493777125" %}
+  </div>
 
 </div>
 
 
 <!-- exclude if no text is provided -->
-{% if site.data.copy.about[page.env].text %}
-<div class="about__copy bg--env-100" id="content">
 
-  {% for item in site.data.copy.about[page.env].text %}
-  <p class="about--copy" data-aos="fade-in">
-    {{ item.para }}</p>
-  {% endfor %}
-</div>
-{% endif %}
-
-<div class="embedded__video about--video">
-  <!--
-  <h2>Watch our company video</h2>
-  -->
-  {% include vimeoPlayer.html id="493777125" %}
+<div class="about__copy">
+  <p class="about__copy-text" data-aos="fade-up">
+    {{ site.data.copy.about.info }}</p>
 
 </div>
+
 
 <div class="about__team">
   <h2 class="bg--env-50 about__team--title">Meet the team</h2>
