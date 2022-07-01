@@ -1,3 +1,106 @@
+$hero-split: 40vw
+
+.feed__hero
+  display: flex
+  flex-direction: row
+  width: 100vw
+  height: 60vh
+  margin-top: 10vh
+  background-color: $opd-coral
+
+.feed__hero-img-wrap
+  width: $hero-split
+  //height: auto
+  overflow: hidden
+
+  .feed__hero-img
+    height: auto
+    width: 100%
+    object-fit: cover
+
+.feed__hero-copy-wrap
+  display: flex
+  flex-direction: column
+  align-content: space-between
+  flex-flow: row wrap
+  width: 100vw - $hero-split
+  height: 100%
+  background-color: $opd-blue
+  padding: 8vh 5vw
+  color: $pure-white
+  //transform: translateX(100vw-$hero-split)
+  //animation: feed_copy_wrap_slide_left .6s ease-out 0s forwards
+
+@keyframes feed_copy_wrap_slide_left
+  0%
+    transform: translateX(100vw-$hero-split)
+
+  100%
+    transform: translateX(0)
+
+.feed__hero-header
+  width: 100%
+  color: inherit
+  transform: translateY(60vh)
+  animation: feed_copy_slide_up .6s ease-out .6s forwards
+
+@keyframes feed_copy_slide_up
+  0%
+    transform: translateY(60vh)
+
+  100%
+    transform: translateX(0)
+
+.feed__hero-meta
+  display: none
+
+.feed__hero-description
+  font-size: 2.2rem
+  line-height: 3rem
+  transform: translateY(60vh)
+  animation: feed_header_slide_up .6s ease-out .8s forwards
+
+@keyframes feed_header_slide_up
+  0%
+    transform: translateY(60vh)
+
+  100%
+    transform: translateX(0)
+
+.feed__hero-link
+  transform: translateY(-1.9rem)
+  position: absolute
+  top: 70vh
+  right: 5vw
+  align-self: flex-end
+  color: $pure-white
+  @include gaitq-cta($opd-coral, $pure-white)
+  opacity: 0
+  animation: feed_meta_slide_left .6s ease-out 1.4s forwards
+
+  svg
+    fill: none
+    margin-left: 10px
+    position: relative
+    stroke-linecap: round
+    stroke-linejoin: round
+    stroke-width: 2
+    top: 0
+    transform: translateX(-10px)
+    transition: .2s ease
+    stroke: $pure-white
+
+  &:hover
+    svg
+      transform: translateX(0)
+
+@keyframes feed_meta_slide_left
+  0%
+    opacity: 0
+
+  100%
+    opacity: 1
+
 
 .post__feed
   display: flex

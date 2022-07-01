@@ -4,38 +4,46 @@ layout: default
 
 <!-- this page shows all our posts ordered by date -->
 <!-- we link to this with /posts/ -->
+{% assign count = 0 %}
 
-{% include masthead.html %}
-
-
-<!--
-<div class="post__feed" id="content">
+<div class="feed__hero">
 
   {% for post in site.posts %}
 
-  <div class="feed__card" data-aos="fade-up">
+  {% if post.categories contains "featured" and count <= 0 %}
 
-    <div class="feed__card__image">
-    {% picture thumb {{ post.hero | prepend: 'posts/' }} --alt {{ post.hero_alt }} --img class="feed__card--image image--{{ page.hero_focus }}" %}
-    </div>
-    <div class="feed__card--text">
-      <p class="feed__card--meta">Published <span>{{ post.date | date: "%b %d, %Y" }}</span></p>
-      <a class="feed__card--link" href="{{ site.baseurl }}{{ post.url }}">
+  <div class="feed__hero-img-wrap">
+    {%- picture {{ post.hero | prepend: 'posts/' }}
+      --img class="feed__hero-img"
+      --alt {{ item.alt }} -%}
+  </div>
 
-      <h4 class="feed__card--title">{{ post.title }}</h4>
-      <p class="post__subtitle">{{ post.subtitle }}</p>
-      </a>
+  <div class="feed__hero-copy-wrap">
 
+    <h1 class="feed__hero-header">{{ post.title }}</h1>
 
-    </div>
+    <p class="feed__hero-meta"><span>{{ post.date | date: "%b %d, %Y" }}</span></p>
+
+    <h6 class="feed__hero-description">{{ post.content | strip_html | truncate: '200' }}</h6>
+
+    <a class="feed__hero-link" href="{{ post.url }}">
+      Read More
+      <svg width="13px" height="10px" viewBox="0 0 13 10">
+      <polyline points="8 1 12 5 8 9"></polyline></svg>
+    </a>
 
   </div>
 
+
+
+  {% assign count = count | plus: 1 %}
+
+  {% endif %}
+
   {% endfor %}
 
-
 </div>
--->
+
 
 
 <section class="portfolio-wraper">
