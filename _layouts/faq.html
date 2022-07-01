@@ -3,8 +3,25 @@ layout: default
 ---
 
 
-{% include masthead.html %}
 
+<div class="faq__hero">
+
+  <div class="faq__hero-image-wrap">
+    {% picture {{ page.hero.file | prepend: 'content/' }}
+      --img class="faq__hero-image"
+      --alt {{ page.hero.alt }} %}
+  </div>
+  <div class="faq__hero-overlay"></div>
+
+  <header class="faq__hero-title" aria-label="{{ page.title }}">
+    <h1 aria-hidden="true" >{{ page.title }}</h1>
+
+  </header>
+
+</div>
+
+[GROUPED FAQS. NOT ENOUGH QUESTIONS? PWP, CLINICIAN, FAMILY]
+[INSTAL SEARCH https://github.com/christian-fei/Simple-Jekyll-Search]
 <div class="faq__wrapper" id="content">
 {% for faq in site.data.faq %}
 

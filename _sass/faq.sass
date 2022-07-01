@@ -1,3 +1,39 @@
+$faq-hero-height: 40vh
+
+.faq__hero
+  height: $faq-hero-height
+  overflow: hidden
+
+.faq__hero-image
+  width: 100%
+  object-fit: contain
+  object-position: bottom
+
+.faq__hero-overlay
+  top: 0
+  position: absolute
+  background-color: rgba($opd-blue, .85)
+  width: 100vw
+  height: $faq-hero-height
+
+.faq__hero-title
+  position: absolute
+  top: 20vh
+  left: 5vw
+  color: $pure-white
+
+  & > ::after
+    content: ""
+    display: inline-block
+    margin-left: 1rem
+    margin-bottom: -1rem
+    width: 60px
+    height: 6px
+    background-color: $opd-coral
+
+
+
+
 .faq__wrapper
   display: flex
   flex-direction: column
