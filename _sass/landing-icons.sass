@@ -3,33 +3,34 @@
   display: flex
   flex-direction: row
   width: 100vw
-  max-width: 1000px
   flex-wrap: wrap
   justify-content: space-around
-  margin: 10rem auto
+  margin: 0
+  padding: 10vh 10vw 15vh
+  background-color: $opd-blue
 
-.landing__icons-title
+.landing__icons-header
   width: 100%
+  margin-bottom: 15vh
+  color: $pure-white
+
 
 .landing__icons-svg-wrap
   display: flex
   justify-content: center
   align-items: center
-  background-color: $opd-coral
+  border: solid 5px $opd-coral
   border-radius: 9999px
-  width: 15vh
-  height: 15vh
-  margin-bottom: 2rem
+  width: 15vw
+  height: 15vw
+  margin-bottom: 5vh
 
-.landing__icons
-  & > div:first-of-type
-    .landing__icons-svg-wrap
-      background-color: $pure-white
-      border: 3px solid $opd-coral
+  & > svg
+    fill: $pure-white
 
-.landing__icons-img
-  width: auto
-  height: 8vh
+.landing__icons-svg-title
+  color: $pure-white
+  font-weight: 600
 
 .landing__icons-wrap
   text-align: center
