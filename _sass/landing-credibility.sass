@@ -6,7 +6,7 @@
   display: block
 
 .landing__credibility-copy
-  background-color: rgba($opd-blue, .85)
+  background-color: rgba($opd-coral, .85)
   color: $pure-white
   position: relative
   top: -$landing-panel-height
@@ -22,12 +22,12 @@
   margin-bottom: 1rem
 
   &::before
-    @include bar-decoration($opd-coral, 50px)
+    @include bar-decoration($opd-blue, 50px)
 
 .landing__credibility-cta
   transform: translateY(5.5rem)
   align-self: flex-end
-  @include gaitq-cta($pure-white, $opd-coral)
+  @include gaitq-cta($pure-white, $opd-blue)
 
   svg
     fill: none
@@ -39,7 +39,7 @@
     top: 0
     transform: translateX(-10px)
     transition: .2s ease
-    stroke: $opd-coral
+    stroke: $opd-blue
 
   &:hover
     svg

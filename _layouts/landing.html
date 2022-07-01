@@ -87,30 +87,29 @@ Last full read through 02/06/2022
     {% endfor %}
   </div>
 
-
   <div class="landing__panel landing__credibility">
     {% assign panel = page.panels[0] %}
     {%- picture {{ panel.file | prepend: 'content/' }}
       --img class="landing__credibility-img"
       --alt {{ item.alt }} -%}
 
-      <div class="landing__credibility-copy float-copy-right" >
+    <div class="landing__credibility-copy float-copy-right" >
 
-          <h2 class="landing__credibility-title" data-aos="fade-up">{{ panel.title }}</h2>
+      <h2 class="landing__credibility-title" data-aos="fade-up">{{ panel.title }}</h2>
 
-          <p class="landing__credibility-para" data-aos="fade-in">{{ panel.copy }}</p>
+      <p class="landing__credibility-para" data-aos="fade-in" data-aos-delay="400">{{ panel.copy }}</p>
 
-          <a class="landing__credibility-cta" aria-label="{{ panel.cta.aria }}" href="{{ panel.cta.url }}" >
-            <span>{{ panel.cta.title }}</span>
-            <!-- svg arrow -->
-            <svg width="13px" height="10px" viewBox="0 0 13 10">
-            <polyline points="8 1 12 5 8 9"></polyline></svg>
-          </a>
+      <a class="landing__credibility-cta" aria-label="{{ panel.cta.aria }}" href="{{ panel.cta.url }}" >
+        <span>{{ panel.cta.title }}</span>
+        <!-- svg arrow -->
+        <svg width="13px" height="10px" viewBox="0 0 13 10">
+        <polyline points="8 1 12 5 8 9"></polyline></svg>
+      </a>
 
-
-      </div>
+    </div>
   </div>
 
+  <!--
   <div class="landing__featured">
 
       <h2 class="has__bar-decoration landing__featured-header">Featured news</h2>
@@ -153,11 +152,11 @@ Last full read through 02/06/2022
 
 
   </div>
+  -->
 
+  <div class="landing__icons">
 
-  <div class="landing__panel landing__icons">
-
-    <h2 class="landing__icons-title text-center">
+    <h2 class="landing__icons-header">
       {{ page.product.title }}
     </h2>
 
@@ -165,33 +164,35 @@ Last full read through 02/06/2022
     {% for item in page.product.icons %}
     {% assign tmp = forloop.index | minus: 1 | times: 150 %}
 
-    <div class="landing__icons-wrap" data-aos="fade-up" data-aos-delay="{{ tmp }}" data-aos-duration="600">
+    <div class="landing__icons-wrap" data-aos="fade-in" data-aos-delay="{{ tmp }}" data-aos-duration="600">
 
       <div class="landing__icons-svg-wrap">
-        <img class="landing__icons-img" src="{{ item.svg | prepend: '/assets/images/content/icon-svgs/' | append: '.svg'}}">
+        {% assign svg = item.svg | prepend: '/assets/images/content/icon-svgs/' | append: '.svg' %}
+        {% include_relative {{ svg }} %}
       </div>
 
-      <h4>{{ item.title }}</h4>
+      <h4 class="landing__icons-svg-title">{{ item.title }}</h4>
     </div>
     {% endfor %}
 
   </div>
 
-  <div class="landing__panel landing__testimonial">
-
+  <div class="  landing__testimonial">
+    {% assign panel = page.panels[1] %}
+    <!--
     {% assign panel = page.panels[1] %}
     {%- picture {{ panel.file | prepend: 'content/' }}
       --img class="landing__testimonial-img"
       --alt {{ item.alt }} -%}
+    -->
 
-      <div class="landing__testimonial-copy float-copy-left">
-
+      <div class="landing__testimonial-copy">
         <div class="landing__testimonial-wraper">
           <h5 class="landing__testimonial-quote" data-aos="fade-in">{{ panel.quote }}</h5>
           <h6 class="landing__testimonial-author" data-aos="fade-in">{{ panel.author }}</h6>
-
         </div>
       </div>
+
   </div>
 
 </div>
