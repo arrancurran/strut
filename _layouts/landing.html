@@ -86,7 +86,8 @@ Last full read through 02/06/2022
 
     {% endfor %}
   </div>
-
+  [NEEDS REAL GAITQ PEOPLE IMAGES. PERSON WEARING THE DEVICE, CLINICIAN CONSULTING A PATIENT, FAMILY OF PWP?]
+  [NOW: LINK ALL TO PRODUCT INFO FUTURE: CUSTOM PRODUCT PAGES FOR EACH]
   <div class="landing__panel landing__credibility">
     {% assign panel = page.panels[0] %}
     {%- picture {{ panel.file | prepend: 'content/' }}
@@ -177,22 +178,58 @@ Last full read through 02/06/2022
 
   </div>
 
-  <div class="  landing__testimonial">
+  <!--
+  <div class="landing__testimonial">
     {% assign panel = page.panels[1] %}
-    <!--
     {% assign panel = page.panels[1] %}
     {%- picture {{ panel.file | prepend: 'content/' }}
       --img class="landing__testimonial-img"
       --alt {{ item.alt }} -%}
-    -->
-
       <div class="landing__testimonial-copy">
-        <div class="landing__testimonial-wraper">
-          <h5 class="landing__testimonial-quote" data-aos="fade-in">{{ panel.quote }}</h5>
-          <h6 class="landing__testimonial-author" data-aos="fade-in">{{ panel.author }}</h6>
-        </div>
+        <h5 class="landing__testimonial-quote" data-aos="fade-in">{{ panel.quote }}</h5>
+        <h6 class="landing__testimonial-author" data-aos="fade-in">{{ panel.author }}</h6>
+      </div>
+  </div>
+  -->
+
+  <div class="landing__testimonial-wrap">
+
+    <div class="landing__testimonial-slider">
+
+      {% for testimonial in site.data.copy.testimonials %}
+      <input type="radio" name="landing__testimonial-slider" title="testimonial_{{ forloop.index }}"
+      {% if forloop.index == 1 %}
+        checked="checked"
+      {% endif %}
+        class="landing__testimonial-slider__nav" />
+      {% endfor %}
+
+      <div class="landing__testimonial-slider__inner" style="width:
+        {% assign count = 1 %}
+        {% for testimonial in site.data.copy.testimonials %}
+
+        {% assign width = count | times: 100 | append: '%' %}
+
+        {% assign count = count | plus: 1 %}
+
+        {% endfor %}
+
+        {{ width }}
+      ">
+
+      {% for testimonial in site.data.copy.testimonials %}
+
+      <div class="landing__testimonial-slider__contents">
+
+        <h5 class="landing__testimonial-slider__quote">"{{ testimonial.quote }}"</h5>
+        <h6 class="landing__testimonial-slider__author">{{ testimonial.author }}</h6>
       </div>
 
+      {% endfor %}
+
+    </div>
+
+  </div>
   </div>
 
 </div>
